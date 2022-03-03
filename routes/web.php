@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\{ PrincipalController, 
+                           SobreNosController, 
+                           ContatoController,
+                          FornecedorController };
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/','PrincipalController@index')->name('site.index');
+Route::get('/sobre-nos','SobreNosController@index')->name('site.sobrenos');
+Route::get('/contato','ContatoController@index')->name('site.contato');
+Route::get('/login', function () { return 'login'; })->name('site.login');
+
+Route::group(['prefix' => 'app'], function() {
+    
 });
+
